@@ -5,6 +5,10 @@
   margin-bottom: 16px;
   margin: 0 16px 16px 16px;
 
+  >div.removed {
+    display: none;
+  }
+
   .post-title {
     text-decoration: underline;
     display: inline-block;

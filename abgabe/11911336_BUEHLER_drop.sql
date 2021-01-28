@@ -1,0 +1,10 @@
+----------------- DROP -----------------
+DROP TABLE revision;
+DROP TABLE mitarbeiter;
+DROP TABLE autor_hat_artikel;
+DROP TABLE autor_hat_sprache;
+DROP TABLE autor;
+DROP TABLE person;
+DROP TABLE artikel;
+DROP TABLE universitaet;
+DROP TABLE sprache;
