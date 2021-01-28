@@ -37,7 +37,7 @@ class Database
 
   public function getPosts($uniId)
   {
-    $sql = "SELECT * FROM REV_POSTS WHERE uni_id = '%{$uniId}%'";
+    $sql = "SELECT * FROM REV_POSTS WHERE uni_id = %{$uniId}%";
     $statement = oci_parse($this->conn, $sql);
     oci_execute($statement);
     oci_fetch_all($statement, $res, null, null, OCI_FETCHSTATEMENT_BY_ROW);
