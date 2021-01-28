@@ -1,7 +1,7 @@
 <?php
 require_once('req_handler.php');
 
-$env = get_env;
+$env = get_env();
 
 /**
  * Get all posts of an uni.
