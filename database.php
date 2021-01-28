@@ -62,7 +62,7 @@ class Database
   public function createPost($uniId, $data)
   {
     // create author
-    $authorId = this.createAuthor('anonymous', $uniId);
+    $authorId = self::createAuthor('anonymous', $uniId);
 
     // create post
     $sql = "INSERT INTO POST (hauptautor_id, ref_post_id, uni_id, datum) VALUES (:p_hauptautor_id, NULL, :p_uni_id, CURRENT_DATE) returning id into :inserted_id";
@@ -78,7 +78,7 @@ class Database
     oci_free_statement($statement);
 
     // create revision
-    createRevision($idNumber, $data['titel'], $data['inhalt']);
+    self::createRevision($idNumber, $data['titel'], $data['inhalt']);
 
     return $idNumber;
   }
