@@ -90,9 +90,9 @@ CREATE TABLE revision (
 
 
 ----------------- CREATE VIEWS -----------------
-CREATE VIEW REV_POSTS
+CREATE OR REPLACE VIEW REV_POSTS
 AS SELECT 
-    p.id, r.titel, p.uni_id, r.inhalt, p.datum, a.kuerzel
+    p.id, r.titel, p.uni_id, r.inhalt, p.datum, a.kuerzel, p.likes
 FROM post p
     -- MOST RECFENT REVISION
     INNER JOIN revision r ON r.post_id = p.id
@@ -107,9 +107,28 @@ FROM post p
     INNER JOIN autor a ON a.id = p.hauptautor_id
     
     WHERE
-        p.ref_post_id is null
+        p.ref_post_id IS NULL
     ORDER BY p.datum DESC;
 
+CREATE OR REPLACE VIEW POST_DISCUSSION
+AS SELECT 
+    p.id, r.titel, p.uni_id, r.inhalt, p.datum, a.kuerzel, p.likes
+FROM post p
+    -- MOST RECFENT REVISION
+    INNER JOIN revision r ON r.post_id = p.id
+    INNER JOIN
+    (
+        SELECT post_id, MAX(versnr) maxVers
+        FROM revision
+        GROUP BY post_id
+    ) mx ON mx.post_id = p.id AND r.versnr = mx.maxVers
+    
+    -- RESOLVE AUTHOR
+    INNER JOIN autor a ON a.id = p.hauptautor_id
+    
+    WHERE
+        p.ref_post_id IS NOT NULL
+    ORDER BY p.datum DESC;
 
 ----------------- CREATE PROCEDURES -----------------
 CREATE OR REPLACE PROCEDURE INSERT_POST (

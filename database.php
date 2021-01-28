@@ -59,6 +59,15 @@ class Database
     oci_execute($statement);
   }
 
+  public function getPostDiscussion($uniId, $postId) {
+    $sql = "SELECT * FROM POST_DISCUSSION WHERE uni_id = {$uniId} AND ref_post_id = {$postId}";
+    $statement = oci_parse($this->conn, $sql);
+    oci_execute($statement);
+    oci_fetch_all($statement, $res, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+    oci_free_statement($statement);
+    return $res;
+  }
+
   public function createPost($uniId, $data)
   {
     // create author

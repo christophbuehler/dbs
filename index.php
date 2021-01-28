@@ -32,6 +32,16 @@ handle('GET', '/post/{uni}', function ($data) {
 });
 
 /**
+ * Get post discussion.
+ * [GET] /post/{uni}/{post}
+ */
+handle('GET', '/post/{uni}/{post}', function ($data) {
+  $env = get_env();
+  $db = new Database($env);
+  return $db->getPostDiscussion($data['uni'], $data['post']);
+});
+
+/**
  * Create a post for an uni.
  * [POST] /post/{uni}
  */
