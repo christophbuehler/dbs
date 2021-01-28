@@ -1,12 +1,15 @@
 <?php
+/**
+ * Access the api using the rif (ressource identifier) param (?rif=xy).
+ * If this parameter is not provided, the contents of index.html are returned.
+ */
+
 require_once('req_handler.php');
 require_once('database.php');
 
 /**
  * Get all unis.
- * 
- * example:
- * http://wwwlab.cs.univie.ac.at/~christophb77/dbs/index.php?rif=/uni
+ * [GET] /uni
  */
 handle('GET', '/uni', function ($data) {
   $env = get_env();
@@ -16,9 +19,7 @@ handle('GET', '/uni', function ($data) {
 
 /**
  * Get all posts of an uni.
- * 
- * example:
- * http://wwwlab.cs.univie.ac.at/~christophb77/dbs/index.php?rif=/post/univie
+ * [GET] /post/{uni}
  */
 handle('GET', '/post/{uni}', function ($data) {
   echo $data['uni'];
@@ -26,6 +27,8 @@ handle('GET', '/post/{uni}', function ($data) {
   echo $env['repo'];
   $db = new Database($env);
 });
+
+return file_get_contents('index.html');
 
 function get_env() {
   $env = array();
@@ -38,6 +41,7 @@ function get_env() {
   }
   return $env;
 }
+
 
 
 /// read

@@ -10,3 +10,7 @@
 
 # Deployment
 Deployment happens automatically via a web hook of the github repository.
+
+
+# API Calls
+`http://wwwlab.cs.univie.ac.at/~christophb77/dbs/index.php?rif=/uni`
