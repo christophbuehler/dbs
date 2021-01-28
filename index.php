@@ -24,10 +24,9 @@ handle('GET', '/uni', function ($data) {
  * [GET] /post/{uni}
  */
 handle('GET', '/post/{uni}', function ($data) {
-  echo $data['uni'];
   $env = get_env();
-  echo $env['repo'];
   $db = new Database($env);
+  return $db->getPosts($data['uni']);
 });
 
 return file_get_contents('index.html');
@@ -43,8 +42,6 @@ function get_env() {
   }
   return $env;
 }
-
-
 
 /// read
 // [GET] /api/posts/univie

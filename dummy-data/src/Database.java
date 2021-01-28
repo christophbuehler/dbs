@@ -69,12 +69,11 @@ public class Database {
 		java.util.Date to = dateFormat.parse("2021-01-28");
 
 		PreparedStatement stmtPost = con.prepareStatement("INSERT INTO post (hauptautor_id, sprache_kuerzel, uni_id, datum, ist_live, likes) VALUES (?, 'de', ?, ?, 0, ?)", new String[] { "id" });
-		PreparedStatement stmtRev = con.prepareStatement("INSERT INTO revision (post_id, uni_id, titel, inhalt) VALUES (?, ?, ?, ?)");
+		PreparedStatement stmtRev = con.prepareStatement("INSERT INTO revision (post_id, versnr, uni_id, titel, inhalt) VALUES (?, 0, ?, ?, ?)");
 
 		con.setAutoCommit(false);
 		
 		for (int i=0; i<POST_COUNT; ++i) {
-			
 			int uniId = uni_ids[faker.number().numberBetween(0, UNI_COUNT - 1)];
 			
 			// post
