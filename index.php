@@ -1,7 +1,8 @@
 <?php
 require_once('req_handler.php');
+require_once('database.php');
 
-$env = get_env();
+
 
 /**
  * Get all posts of an uni.
@@ -11,7 +12,11 @@ $env = get_env();
  */
 handle('GET', '/posts/{uni}', function ($data) {
   echo $data['uni'];
+
+  $env = get_env();
   echo $env['repo'];
+
+  $db = new Database($env);
 });
 
 function get_env() {
