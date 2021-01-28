@@ -1,8 +1,8 @@
 RewriteEngine On
 
 # Exclude PHP files from rewrite
-RewriteCond %{REQUEST_URI} !\.(php)$
-RewriteRule ^api/(.*)$ index.php?url=$1 [L]
+# RewriteCond %{REQUEST_URI} !\.(php)$
+# RewriteRule ^api/(.*)$ index.php?url=$1 [L]
 
 # Return frontend
-RewriteCond %{REQUEST_URI} !^/dbs-frontend/dist/
+# RewriteCond %{REQUEST_URI} !^/dbs-frontend/dist/
