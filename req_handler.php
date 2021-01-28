@@ -26,12 +26,12 @@ function url_tpl_data($_url, $_url_tpl) {
   $data = array();
   for ($i=0; $i<=10; $i++) {
     if ($parts_b[i][0] != '{') {
-      if (strtoupper($parts_b[i]) != strtoupper($parts_a[i]))
+      if (strtoupper($parts_b[$i]) != strtoupper($parts_a[$i]))
         throw new Exception('url segment does not match');
       continue;
     }
-    $var_name = str_replace(array('{', '}', '', $parts_b[i]));
-    $data[$var_name] = $parts_a[i];
+    $var_name = str_replace(array('{', '}', '', $parts_b[$i]));
+    $data[$var_name] = $parts_a[$i];
   }
   return $data;
 }
