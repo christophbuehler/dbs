@@ -91,4 +91,28 @@ class Database
 
     return $idNumber;
   }
+
+  public function createReply($uniId, $refPostId, $data)
+  {
+    // create author
+    $authorId = self::createAuthor('anonymous', $uniId);
+
+    // create post
+    $sql = "INSERT INTO POST (hauptautor_id, ref_post_id, uni_id, datum) VALUES (:p_hauptautor_id, :p_ref_post_id, :p_uni_id, CURRENT_DATE) returning id into :inserted_id";
+    // $sql = "BEGIN INSERT_POST(:p_hauptautor_id, :p_ref_post_id, :p_uni_id); END;";
+    $statement = oci_parse($this->conn, $sql);
+
+    oci_bind_by_name($statement, ':p_hauptautor_id', $authorId, 32);
+    oci_bind_by_name($statement, ':p_ref_post_id', $refPostId, 32);
+    oci_bind_by_name($statement, ':p_uni_id', $uniId, 32);
+    oci_bind_by_name($statement, ':inserted_id', $idNumber, 32);
+
+    oci_execute($statement);
+    oci_free_statement($statement);
+
+    // create revision
+    self::createRevision($idNumber, $data['titel'], $data['inhalt']);
+
+    return $idNumber;
+  }
 }

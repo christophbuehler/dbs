@@ -11,3 +11,8 @@
   <div class="likes">{{post.LIKES}}</div>
   <mat-icon>favorite_border</mat-icon>
 </div>
+<div class="actions" fxLayout="row" fxLayoutAlign="end center">
+  <div mat-button>
+    <span (click)="respond()">reply</span>
+  </div>
+</div>

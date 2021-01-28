@@ -56,6 +56,14 @@ export class ApiService {
       }),
     );
   }
+
+  createReply(refPostId: number, data: any) {
+    return this.selectedUniSub.pipe(
+      tap(uni => {
+        this.http.post(`${API_BASE}/post/${uni.ID}/${refPostId}`, data).subscribe();
+      }),
+    );
+  }
 }
 
 export interface Uni {
@@ -64,7 +72,7 @@ export interface Uni {
 }
 
 export interface Post {
-  id: number;
+  ID: number;
   title: string;
   content: string;
 }

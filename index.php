@@ -52,6 +52,17 @@ handle('POST', '/post/{uni}', function ($data) {
   return $db->createPost($data['uni'], $body);
 });
 
+/**
+ * Create a reply for a post.
+ * [POST] /post/{uni}/{post}
+ */
+handle('POST', '/post/{uni}/{post}', function ($data) {
+  $env = get_env();
+  $db = new Database($env);
+  $body = json_decode(file_get_contents('php://input'), true);
+  return $db->createReply($data['uni'], $data['post'], $body);
+});
+
 return file_get_contents('index.html');
 
 function get_env() {
