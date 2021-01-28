@@ -29,6 +29,16 @@ handle('GET', '/post/{uni}', function ($data) {
   return $db->getPosts($data['uni']);
 });
 
+/**
+ * Create a post for an uni.
+ * [POST] /post/{uni}
+ */
+handle('POST', '/post/{uni}', function ($data) {
+  $env = get_env();
+  $db = new Database($env);
+  return $db->createPost($data['uni'], $_POST);
+});
+
 return file_get_contents('index.html');
 
 function get_env() {

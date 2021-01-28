@@ -1,0 +1,11 @@
+<div [formGroup]="group" fxLayout="column">
+  <mat-form-field>
+    <mat-label>Titel</mat-label>
+    <input type="text" matInput formControlName="titel">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Inhalt</mat-label>
+    <textarea type="text" matInput formControlName="inhalt"></textarea>
+  </mat-form-field>
+</div>
+<button mat-button (click)="save()">speichern</button>

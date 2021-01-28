@@ -111,27 +111,14 @@ FROM post p
     ORDER BY p.datum DESC;
 
 
-
 ----------------- CREATE PROCEDURES -----------------
-CREATE PROCEDURE get_posts (uni_id NUMBER)
-    SELECT
-        p.id, p.hauptautor_id, r.titel, r.inhalt, p.datum, a.kuerzel
-    FROM post p
-
-    -- MOST RECFENT REVISION
-    INNER JOIN revision r ON r.post_id = p.id
-    INNER JOIN
-    (
-        SELECT post_id, MAX(versnr) maxVers
-        FROM revision
-        GROUP BY post_id
-    ) mx ON mx.post_id = p.id AND r.versnr = mx.maxVers
-
-    -- RESOLVE AUTHOR
-    INNER JOIN autor a ON a.id = p.hauptautor_id
-
-    WHERE
-        p.ref_post_id is null
-    AND
-        p.uni_id = get_posts.uni_id
-    ORDER BY p.datum DESC
+CREATE OR REPLACE PROCEDURE INSERT_POST (
+       p_hauptautor_id IN POST.hauptautor_id%TYPE,
+       p_ref_post_id IN POST.ref_post_id%TYPE,
+       p_uni_id IN POST.uni_id%TYPE
+) IS
+BEGIN
+  INSERT INTO POST (hauptautor_id, ref_post_id, uni_id, datum) 
+  VALUES (p_hauptautor_id, p_ref_post_id, p_uni_id, CURRENT_DATE);
+  COMMIT;
+END;

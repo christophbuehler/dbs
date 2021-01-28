@@ -1,0 +1,8 @@
+<mat-toolbar>
+  <nav>
+    <ul>
+      <li *ngFor="let uni of unis | async" [class.selected]="(api.selectedUni | async)?.ID === uni.ID"
+        (click)="api.selectUni(uni)">{{uni.NAME}}</li>
+    </ul>
+  </nav>
+</mat-toolbar>

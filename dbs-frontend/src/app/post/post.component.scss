@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  border: 1px solid rgba(255, 255, 255, .1);
+  padding: 16px;
+  margin-bottom: 16px;
+  margin: 0 16px 16px 16px;
+
+  .meta {
+    font-size: 14px;
+    line-height: 28px;
+    color: rgba(255, 255, 255, .4);
+
+    .likes {
+      margin-right: 8px;
+    }
+  }
+}
