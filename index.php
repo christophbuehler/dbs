@@ -11,7 +11,7 @@ require_once('database.php');
 handle('GET', '/uni', function ($data) {
   $env = get_env();
   $db = new Database($env);
-  return $db.getUnis();
+  return $db->getUnis();
 });
 
 /**
