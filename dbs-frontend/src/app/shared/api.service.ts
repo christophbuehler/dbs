@@ -42,6 +42,14 @@ export class ApiService {
     ).subscribe();
   }
 
+  removePost(postId: number) {
+    return this.selectedUniSub.pipe(
+      tap(uni => {
+        this.http.delete(`${API_BASE}/post/${uni.ID}/${postId}`).subscribe();
+      }),
+    );
+  }
+
   fetchPosts(uniId: number) {
     this.http.get(`${API_BASE}/post/${uniId}`).pipe(
       pluck('data'),

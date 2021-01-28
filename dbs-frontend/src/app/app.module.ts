@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input'
 import { ReactiveFormsModule } from '@angular/forms';
 import { PostResponseComponent } from './post-response/post-response.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PostResponseComponent } from './post-response/post-response.component';
     MatDialogModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

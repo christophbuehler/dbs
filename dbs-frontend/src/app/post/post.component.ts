@@ -14,6 +14,7 @@ export class PostComponent implements OnInit {
 
   showResponses = false;
   responses: any[];
+  removed = false;
 
   constructor(
     private dialog: MatDialog,
@@ -32,6 +33,12 @@ export class PostComponent implements OnInit {
     this.api.fetchPostResponses(this.post.ID).pipe(
       tap(resp => console.log('resp', resp)),
       tap((resp : any) => this.responses = resp),
+    ).subscribe();
+  }
+
+  removePost() {
+    this.api.removePost(this.post.ID).pipe(
+      tap(() => this.removed = true),
     ).subscribe();
   }
 

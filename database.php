@@ -68,6 +68,15 @@ class Database
     return $res;
   }
 
+  public function deletePost($uniId, $postId)
+  {
+    $sql = "DELETE FROM POST WHERE UNI_ID = {$uniId} AND ID = {$postId}";
+    $statement = oci_parse($this->conn, $sql);
+    oci_execute($statement);
+    oci_free_statement($statement);
+    return $res;
+  }
+
   public function createPost($uniId, $data)
   {
     // create author

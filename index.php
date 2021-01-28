@@ -63,6 +63,16 @@ handle('POST', '/post/{uni}/{post}', function ($data) {
   return $db->createReply($data['uni'], $data['post'], $body);
 });
 
+/**
+ * Delete a post.
+ * [DELETE] /post/{uni}/{post}
+ */
+handle('DELETE', '/post/{uni}/{post}', function ($data) {
+  $env = get_env();
+  $db = new Database($env);
+  return $db->deletePost($data['uni'], $data['post']);
+});
+
 return file_get_contents('index.html');
 
 function get_env() {
