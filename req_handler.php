@@ -30,7 +30,7 @@ function url_tpl_data($_url, $_url_tpl) {
         throw new Exception('url segment does not match');
       continue;
     }
-    $var_name = str_replace(array('{', '}', '', $parts_b[$i]));
+    $var_name = str_replace(array('{', '}'), '', $parts_b[$i]);
     $data[$var_name] = $parts_a[$i];
   }
   return $data;
