@@ -22,7 +22,7 @@ handle('GET', '/posts/{uni}', function ($data) {
 function get_env() {
   $env = array();
   $env_file = file_get_contents('./univie.env');
-  $lines = explode('\\n', $env_file);
+  $lines = explode(PHP_EOL, $env_file);
 
   echo count($lines);
   var_dump($lines);
