@@ -32,8 +32,8 @@ function get_env() {
   $env_file = file_get_contents('./univie.env');
   $lines = explode(PHP_EOL, $env_file);
   for ($i=0; $i<count($lines); $i++) {
-    if (count($parts) != 2) continue;
     $parts = explode('=', $lines[$i]);
+    if (count($parts) != 2) continue;
     $env[$parts[0]] = $parts[1];
   }
   return $env;
