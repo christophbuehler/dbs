@@ -3,7 +3,7 @@ require_once('req_handler.php');
 
 // https://wwwlab.cs.univie.ac.at/~christophb77/dbs/index.php?rif=/posts/univie
 handle('GET', '/posts/{uni}', function ($data) {
-  echo $data[uni];
+  echo $data['uni'];
 });
 
 // [GET] /api/posts/univie

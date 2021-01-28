@@ -24,7 +24,7 @@ function url_tpl_data($_url, $_url_tpl) {
     throw new Exception('part len does not match');
 
   $data = array();
-  for ($i=0; $i<=count($parts_a); $i++) {
+  for ($i=0; $i<count($parts_a); $i++) {
     if ($parts_b[$i][0] != '{') {
       if (strtoupper($parts_b[$i]) != strtoupper($parts_a[$i]))
         throw new Exception('url segment does not match');
