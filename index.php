@@ -28,7 +28,6 @@ function get_env() {
 
   for ($i=0; $i<count($lines); $i++) {
     $parts = explode('=', $lines[$i]);
-    echo $parts[0];
     $env[$parts[0]] = $parts[1];
   }
   return $env;
