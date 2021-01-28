@@ -12,10 +12,8 @@ require_once('database.php');
  */
 handle('GET', '/posts/{uni}', function ($data) {
   echo $data['uni'];
-
   $env = get_env();
   echo $env['repo'];
-
   $db = new Database($env);
 });
 
@@ -23,10 +21,6 @@ function get_env() {
   $env = array();
   $env_file = file_get_contents('./univie.env');
   $lines = explode(PHP_EOL, $env_file);
-
-  echo count($lines);
-  var_dump($lines);
-
   for ($i=0; $i<count($lines); $i++) {
     $parts = explode('=', $lines[$i]);
     $env[$parts[0]] = $parts[1];
