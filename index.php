@@ -1,12 +1,29 @@
 <?php
 require_once('req_handler.php');
 
-// https://wwwlab.cs.univie.ac.at/~christophb77/dbs/index.php?rif=/posts/univie
+$env = get_env;
+
+/**
+ * Get all posts of an uni.
+ * 
+ * example:
+ * http://wwwlab.cs.univie.ac.at/~christophb77/dbs/index.php?rif=/posts/univie
+ */
 handle('GET', '/posts/{uni}', function ($data) {
   echo $data['uni'];
+  echo $env['repo'];
 });
 
-// [GET] /api/posts/univie
+function get_env() {
+  $env = array();
+  $env_file = file_get_contents('univie.env');
+  $lines = explode('\n', $env_file);
+  for ($i=0; $i<count($lines); $i++) {
+    $parts = explode('=', $lines[$i]);
+    $env[$parts[0]] = $parts[1];
+  }
+  return $env;
+}
 
 
 /// read
