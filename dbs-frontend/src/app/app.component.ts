@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from './shared/api.service';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { filter, tap, withLatestFrom } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -22,5 +23,12 @@ export class AppComponent {
       height: '400px',
       width: '600px',
     });
+
+    // reload posts if added successfully
+    dialogRef.afterClosed().pipe(
+      filter(Boolean),
+      withLatestFrom(this.api.selectedUni),
+      tap(([, uni]) => this.api.fetchPosts(uni.ID)),
+    ).subscribe();
   }
 }

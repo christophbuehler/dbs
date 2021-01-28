@@ -27,8 +27,8 @@
           outline: none;
 
           &.selected {
-            background: rgba(230, 230, 255, .18);
-            color: #1061f0;
+            background: rgba(255, 255, 255, .18);
+            color: hsla(216, 81%, 50%, 1);
           }
         }
       }

@@ -1,14 +1,25 @@
 :host {
   display: block;
-  border: 1px solid rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .18);
   padding: 16px;
   margin-bottom: 16px;
   margin: 0 16px 16px 16px;
 
+  .post-title {
+    text-decoration: underline;
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .post-content {
+    line-height: 22px;
+  }
+
   .meta {
     font-size: 14px;
     line-height: 28px;
-    color: rgba(255, 255, 255, .4);
+    color: hsla(216, 81%, 50%, 1);
 
     .likes {
       margin-right: 8px;

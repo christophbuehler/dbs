@@ -37,7 +37,7 @@ export class ApiService {
   fetchUnis() {
     this.http.get(`${API_BASE}/uni`).pipe(
       pluck('data'),
-      tap(unis => console.log('UNIS', unis)),
+      tap(unis => this.selectUni(unis[0])),
       tap(unis => this.unisSub.next(unis as any)),
     ).subscribe();
   }
@@ -45,8 +45,6 @@ export class ApiService {
   fetchPosts(uniId: number) {
     this.http.get(`${API_BASE}/post/${uniId}`).pipe(
       pluck('data'),
-      tap(posts => console.log('posts', posts)),
-      tap(posts => console.log('posts', posts)),
       tap(posts => this.postsSub.next(posts as any)),
     ).subscribe();
   }
@@ -56,7 +54,7 @@ export class ApiService {
       tap(uni => {
         this.http.post(`${API_BASE}/post/${uni.ID}`, data).subscribe();
       }),
-    )
+    );
   }
 }
 

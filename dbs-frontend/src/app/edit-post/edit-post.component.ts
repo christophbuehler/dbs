@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from '../shared/api.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class EditPostComponent implements OnInit {
   });
 
   constructor(
+    public dialogRef: MatDialogRef<EditPostComponent>,
     private api: ApiService,
   ) { }
 
@@ -21,6 +23,7 @@ export class EditPostComponent implements OnInit {
   }
 
   save() {
-    this.api.createPost(this.group.value).subscribe();
+    this.api.createPost(this.group.value)
+      .subscribe(() => this.dialogRef.close(true));
   }
 }
