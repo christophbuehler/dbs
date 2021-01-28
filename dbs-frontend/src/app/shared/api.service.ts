@@ -57,7 +57,7 @@ export class ApiService {
     );
   }
 
-  createReply(refPostId: number, data: any) {
+  createReply(data: any, refPostId: number) {
     return this.selectedUniSub.pipe(
       tap(uni => {
         this.http.post(`${API_BASE}/post/${uni.ID}/${refPostId}`, data).subscribe();

@@ -15,7 +15,7 @@ export class EditPostComponent implements OnInit {
     titel: new FormControl(),
     inhalt: new FormControl(),
   });
-  refPostId: string;
+  refPostId: number;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
