@@ -2,15 +2,25 @@
 require_once('req_handler.php');
 require_once('database.php');
 
-
+/**
+ * Get all unis.
+ * 
+ * example:
+ * http://wwwlab.cs.univie.ac.at/~christophb77/dbs/index.php?rif=/uni
+ */
+handle('GET', '/uni', function ($data) {
+  $env = get_env();
+  $db = new Database($env);
+  return $db.getUnis();
+});
 
 /**
  * Get all posts of an uni.
  * 
  * example:
- * http://wwwlab.cs.univie.ac.at/~christophb77/dbs/index.php?rif=/posts/univie
+ * http://wwwlab.cs.univie.ac.at/~christophb77/dbs/index.php?rif=/post/univie
  */
-handle('GET', '/posts/{uni}', function ($data) {
+handle('GET', '/post/{uni}', function ($data) {
   echo $data['uni'];
   $env = get_env();
   echo $env['repo'];
@@ -22,6 +32,7 @@ function get_env() {
   $env_file = file_get_contents('./univie.env');
   $lines = explode(PHP_EOL, $env_file);
   for ($i=0; $i<count($lines); $i++) {
+    if (count($parts) != 2) continue;
     $parts = explode('=', $lines[$i]);
     $env[$parts[0]] = $parts[1];
   }

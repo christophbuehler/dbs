@@ -5,8 +5,13 @@ function handle($_method, $_rif, $callback) {
   if (!$method_correct) return;
   $rif = $_GET['rif'];
   try {
-    $data = url_tpl_data($rif, $_rif);
-    $callback($data);
+    $url_data = url_tpl_data($rif, $_rif);
+    $res = $callback($url_data);
+    $data = [
+      "success" => 1,
+      "data" => $res,
+    ];
+    echo json_encode($data);
     exit;
   } catch (exception $e) {
     return $e;
