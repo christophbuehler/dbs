@@ -8,6 +8,7 @@ public class Main {
 			db.removeAll();
 			db.insertAll();
 			db.disconnect();
+			System.out.println("DONE");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

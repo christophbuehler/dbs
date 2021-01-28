@@ -1,0 +1,2 @@
+RewriteRule ^api/(.*)$ index.php?url=$1 [L]
+RewriteCond %{REQUEST_URI} !^/dbs-frontend/dist/
