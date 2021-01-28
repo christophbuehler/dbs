@@ -1,3 +1,4 @@
 OJDBC8
+jars
 *.env
 deploy.php
