@@ -1,0 +1,6 @@
+{
+  "name": "cbuehler/dbs-project",
+  "require": {
+      "rize/uri-template": "*"
+  }
+}
