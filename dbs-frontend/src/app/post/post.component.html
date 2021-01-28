@@ -11,8 +11,18 @@
   <div class="likes">{{post.LIKES}}</div>
   <mat-icon>favorite_border</mat-icon>
 </div>
-<div class="actions" fxLayout="row" fxLayoutAlign="end center">
-  <div mat-button>
-    <span (click)="respond()">reply</span>
+<div class="actions" *ngIf="!showResponses" (click)="loadResponses()" fxLayout="row" fxLayoutAlign="center center">
+  <span>Diskussion anzeigen</span>
+  <mat-icon>keyboard_arrow_down</mat-icon>
+</div>
+<div class="actions" *ngIf="showResponses" (click)="showResponses = false" fxLayout="row" fxLayoutAlign="center center">
+  <span>Diskussion verbergen</span>
+  <mat-icon>keyboard_arrow_up</mat-icon>
+</div>
+<div class="responses" *ngIf="showResponses">
+  <app-post-response [response]="response" *ngFor="let response of responses"></app-post-response>
+
+  <div class="respond">
+    <span mat-button (click)="respond()">antworten</span>
   </div>
 </div>

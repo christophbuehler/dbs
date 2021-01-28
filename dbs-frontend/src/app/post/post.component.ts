@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { filter, tap } from 'rxjs/operators';
 import { EditPostComponent } from '../edit-post/edit-post.component';
-import { Post } from '../shared/api.service';
+import { Post, ApiService } from '../shared/api.service';
 
 @Component({
   selector: 'app-post',
@@ -11,8 +12,12 @@ import { Post } from '../shared/api.service';
 export class PostComponent implements OnInit {
   @Input() post: Post;
 
+  showResponses = false;
+  responses: any[];
+
   constructor(
     private dialog: MatDialog,
+    private api: ApiService,
   ) { }
 
   ngOnInit(): void {
@@ -20,6 +25,14 @@ export class PostComponent implements OnInit {
 
   respond() {
     this.openRespondDialog();
+  }
+
+  loadResponses() {
+    this.showResponses = true;
+    this.api.fetchPostResponses(this.post.ID).pipe(
+      tap(resp => console.log('resp', resp)),
+      tap((resp : any) => this.responses = resp),
+    ).subscribe();
   }
 
   openRespondDialog() {
@@ -33,9 +46,8 @@ export class PostComponent implements OnInit {
 
     // reload posts if added successfully
     dialogRef.afterClosed().pipe(
-      // filter(Boolean),
-      // withLatestFrom(this.api.selectedUni),
-      // tap(([, uni]) => this.api.fetchPosts(uni.ID)),
+      filter(Boolean),
+      tap(() => this.loadResponses()),
     ).subscribe();
   }
 }

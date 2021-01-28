@@ -112,7 +112,7 @@ FROM post p
 
 CREATE OR REPLACE VIEW POST_DISCUSSION
 AS SELECT 
-    p.id, r.titel, p.uni_id, r.inhalt, p.datum, a.kuerzel, p.likes
+    p.id, r.titel, p.uni_id, r.inhalt, p.datum, a.kuerzel, p.likes, p.ref_post_id
 FROM post p
     -- MOST RECFENT REVISION
     INNER JOIN revision r ON r.post_id = p.id

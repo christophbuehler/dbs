@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 import { SubSink } from 'subsink';
-import { pluck, tap } from 'rxjs/operators';
+import { pluck, switchMap, take, tap } from 'rxjs/operators';
 
 const API_BASE = 'http://wwwlab.cs.univie.ac.at/~christophb77/dbs/index.php?rif=';
 
@@ -47,6 +47,14 @@ export class ApiService {
       pluck('data'),
       tap(posts => this.postsSub.next(posts as any)),
     ).subscribe();
+  }
+
+  fetchPostResponses(postId: number) {
+    return this.selectedUniSub.pipe(
+      take(1),
+      switchMap(uni => this.http.get(`${API_BASE}/post/${uni.ID}/${postId}`)),
+      pluck('data'),
+    );
   }
 
   createPost(data: any) {

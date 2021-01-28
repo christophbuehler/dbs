@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input'
 import { ReactiveFormsModule } from '@angular/forms';
+import { PostResponseComponent } from './post-response/post-response.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PostComponent,
     HeaderComponent,
     EditPostComponent,
+    PostResponseComponent,
   ],
   imports: [
     BrowserModule,

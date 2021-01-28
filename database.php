@@ -60,7 +60,7 @@ class Database
   }
 
   public function getPostDiscussion($uniId, $postId) {
-    $sql = "SELECT * FROM POST_DISCUSSION WHERE uni_id = {$uniId} AND ref_post_id = {$postId}";
+    $sql = "SELECT * FROM POST_DISCUSSION WHERE UNI_ID = {$uniId} AND REF_POST_ID = {$postId}";
     $statement = oci_parse($this->conn, $sql);
     oci_execute($statement);
     oci_fetch_all($statement, $res, null, null, OCI_FETCHSTATEMENT_BY_ROW);
