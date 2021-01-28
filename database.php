@@ -75,11 +75,6 @@ class Database
     $statement = oci_parse($this->conn, $sql);
     oci_execute($statement);
     oci_free_statement($statement);
-
-    $sql = "DELETE FROM POST WHERE UNI_ID = {$uniId} AND ID = {$postId}";
-    $statement = oci_parse($this->conn, $sql);
-    oci_execute($statement);
-    oci_free_statement($statement);
   }
 
   public function createPost($uniId, $data)
