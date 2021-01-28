@@ -65,12 +65,12 @@ class Database
     $authorId = createAuthor('anonymous', $uniId);
 
     // create post
-    $sql = "INSERT INTO POST (hauptautor_id, ref_post_id, uni_id, datum) VALUES (:p_hauptautor_id, :p_ref_post_id, :p_uni_id, CURRENT_DATE) returning id into :inserted_id";
+    $sql = "INSERT INTO POST (hauptautor_id, ref_post_id, uni_id, datum) VALUES (:p_hauptautor_id, NULL, :p_uni_id, CURRENT_DATE) returning id into :inserted_id";
     // $sql = "BEGIN INSERT_POST(:p_hauptautor_id, :p_ref_post_id, :p_uni_id); END;";
     $statement = oci_parse($this->conn, $sql);
 
     oci_bind_by_name($statement, ':p_hauptautor_id', $authorId, 32);
-    oci_bind_by_name($statement, ':p_ref_post_id', null, 32);
+    // oci_bind_by_name($statement, ':p_ref_post_id', null, 32);
     oci_bind_by_name($statement, ':p_uni_id', $uniId, 32);
     oci_bind_by_name($statement, ':inserted_id', $idNumber, 32);
 
