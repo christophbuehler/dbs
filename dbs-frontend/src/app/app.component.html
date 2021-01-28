@@ -4,6 +4,6 @@
   <app-post [post]="post" *ngFor="let post of api.posts | async"></app-post>
 </div>
 
-<button mat-fab (click)="openNewDialog()">
+<button class="new-btn" mat-fab (click)="openNewDialog()">
   <mat-icon>add</mat-icon>
 </button>

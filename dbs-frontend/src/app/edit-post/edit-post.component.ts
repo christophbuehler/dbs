@@ -21,8 +21,6 @@ export class EditPostComponent implements OnInit {
   }
 
   save() {
-    console.log(this.group.value);
-
-    this.api.createPost(this.group.value);
+    this.api.createPost(this.group.value).subscribe();
   }
 }

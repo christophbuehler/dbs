@@ -51,10 +51,10 @@ export class ApiService {
     ).subscribe();
   }
 
-  createPost(post: any) {
+  createPost(data: any) {
     return this.selectedUniSub.pipe(
       tap(uni => {
-        this.http.post(`${API_BASE}/post/${uni}`, post).subscribe();
+        this.http.post(`${API_BASE}/post/${uni.ID}`, data).subscribe();
       }),
     )
   }
