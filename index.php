@@ -1,4 +1,15 @@
-HELLO AGAIN :P 3
+<?php
+$method = $_SERVER['REQUEST_METHOD'];
+echo $method;
+
+// [GET] /api/posts/univie
+
+?>
+
+
+
+
+HELLO AGAIN :P 4
 
 
 lorem
