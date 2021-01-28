@@ -9,8 +9,7 @@
 `http://wwwlab.cs.univie.ac.at/~christophb77/dbs`
 
 # Deployment
-Deployment happens automatically via a web hook of the github repository.
-
+Web hooks do not seem to work on Almighty, so just run 'git pull'.
 
 # API Calls
 `http://wwwlab.cs.univie.ac.at/~christophb77/dbs/index.php?rif=/uni`
