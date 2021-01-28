@@ -38,7 +38,8 @@ handle('GET', '/post/{uni}', function ($data) {
 handle('POST', '/post/{uni}', function ($data) {
   $env = get_env();
   $db = new Database($env);
-  return $db->createPost($data['uni'], $_POST);
+  $body = json_decode(file_get_contents('php://input'), true);
+  return $db->createPost($data['uni'], $body);
 });
 
 return file_get_contents('index.html');
