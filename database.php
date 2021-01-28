@@ -80,7 +80,6 @@ class Database
     $statement = oci_parse($this->conn, $sql);
     oci_execute($statement);
     oci_free_statement($statement);
-    return $res;
   }
 
   public function createPost($uniId, $data)
