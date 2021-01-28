@@ -1,0 +1,9 @@
+
+<app-header></app-header>
+<div class="content">
+  <app-post [post]="post" *ngFor="let post of api.posts | async"></app-post>
+</div>
+
+<button class="new-btn" mat-fab (click)="openNewDialog()">
+  <mat-icon>add</mat-icon>
+</button>

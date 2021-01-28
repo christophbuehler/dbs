@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  border: 1px solid rgba(255, 255, 255, .18);
+  padding: 16px 16px 0;
+  margin-bottom: 16px;
+  margin: 0 16px 16px 16px;
+
+  >div.removed {
+    display: none;
+  }
+
+  .post-title {
+    text-decoration: underline;
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .post-content {
+    line-height: 22px;
+  }
+
+  .meta {
+    font-size: 14px;
+    line-height: 28px;
+    color: #aaa;
+    margin: 8px 0;
+
+    .likes {
+      margin-right: 8px;
+      color: hsla(216, 81%, 50%, 1);
+    }
+  }
+
+  .respond {
+    margin-top: 8px;
+    line-height: 32px;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .actions {
+    cursor: pointer;
+    line-height: 32px;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, .18);
+    color: #aaa;
+  }
+}

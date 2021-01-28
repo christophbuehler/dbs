@@ -14,10 +14,10 @@ public class Database {
 
 	private final int UNI_COUNT = 3;
 	private int[] uni_ids = new int[UNI_COUNT];
-	private final int POST_COUNT = 100;
-	private final int AUTOR_COUNT = 30;
+	private final int POST_COUNT = 10000;
+	private final int AUTOR_COUNT = 500;
 	private int[] autor_ids = new int[AUTOR_COUNT];
-	private final int PERSON_COUNT = 100;
+	private final int PERSON_COUNT = 100000;
 	private String[][] persons = new String[PERSON_COUNT][3]; // nachname, vorname
 	
 	private String[] unis = { "Univie", "WU", "TU" };

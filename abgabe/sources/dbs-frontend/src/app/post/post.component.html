@@ -1,0 +1,40 @@
+<div [class.removed]="removed">
+  <div class="post-title" fxLayout="row" fxLayoutAlign="center center">
+    {{post.TITEL}}
+    <span fxFlex></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+  <mat-menu #menu="matMenu">
+    <button (click)="removePost()" mat-menu-item>
+      <mat-icon>remove</mat-icon>
+      <span>Post Entfernen</span>
+    </button>
+  </mat-menu>
+  <div class="post-content">
+    {{post.INHALT}}
+  </div>
+  <div class="meta" fxLayout="row" fxLayoutAlign="center start">
+    <div class="post-autor">{{post.KUERZEL}}</div>
+    <div class="post-date">{{post.DATUM}}</div>
+    <span fxFlex></span>
+    <div class="likes">{{post.LIKES}}</div>
+    <mat-icon>favorite_border</mat-icon>
+  </div>
+  <div class="actions" *ngIf="!showResponses" (click)="loadResponses()" fxLayout="row" fxLayoutAlign="center center">
+    <span>Diskussion anzeigen</span>
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </div>
+  <div class="actions" *ngIf="showResponses" (click)="showResponses = false" fxLayout="row"
+    fxLayoutAlign="center center">
+    <span>Diskussion verbergen</span>
+    <mat-icon>keyboard_arrow_up</mat-icon>
+  </div>
+  <div class="responses" *ngIf="showResponses">
+    <app-post-response [response]="response" *ngFor="let response of responses"></app-post-response>
+    <div class="respond">
+      <span mat-button (click)="respond()">antworten</span>
+    </div>
+  </div>
+</div>

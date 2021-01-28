@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  padding: 16px 16px 16px 32px;
+  border-left: 4px solid rgba(255, 255, 255, .4);
+
+  .headline {
+    font-size: 14px;
+    line-height: 28px;
+    color: hsla(216, 81%, 89%, 1);
+  }
+}

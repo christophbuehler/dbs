@@ -1,0 +1,20 @@
+Die Applikation läuft auf Almighty:
+http://wwwlab.cs.univie.ac.at/~christophb77/dbs/
+
+Deployment:
+-----------------------------------------
+a) In das Verzeichnis navigieren und 'git pull' ausführen.
+b) Bei einer Neuinstallation: 'git clone https://github.com/christophbuehler/dbs.git .'
+
+Wichtig:
+Da der Code auf GitHub publik ist, sind sensitive Informationen in der Datei "univie.env" im Root der Applikation gespeichert.
+So hat der Inhalt auszusehen:
+
+conn_str=...
+php_conn_str=...
+uname=...
+pwd=...
+ssh=...
+repo=https://github.com/christophbuehler/dbs.git
+
+

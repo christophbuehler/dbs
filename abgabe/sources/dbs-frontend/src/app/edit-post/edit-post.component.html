@@ -1,0 +1,19 @@
+<div [formGroup]="group" fxLayout="column">
+  <div class="title">
+    {{refPostId ? 'Write Reply' : 'Write Post'}}
+  </div>
+<!-- 
+  <mat-form-field>
+    <mat-label>Autor</mat-label>
+    <input type="text" matInput formControlName="autor">
+  </mat-form-field> -->
+  <mat-form-field *ngIf="!refPostId">
+    <mat-label>Titel</mat-label>
+    <input type="text" matInput formControlName="titel">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Inhalt</mat-label>
+    <textarea type="text" matInput formControlName="inhalt"></textarea>
+  </mat-form-field>
+</div>
+<button mat-button (click)="save()">speichern</button>
