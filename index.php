@@ -7,6 +7,8 @@
 require_once('req_handler.php');
 require_once('database.php');
 
+header('Access-Control-Allow-Origin: *');
+
 /**
  * Get all unis.
  * [GET] /uni
