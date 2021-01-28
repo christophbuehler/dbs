@@ -70,6 +70,12 @@ class Database
 
   public function deletePost($uniId, $postId)
   {
+    // delete revisions
+    $sql = "DELETE FROM REVISION WHERE POST_ID = {$postId}";
+    $statement = oci_parse($this->conn, $sql);
+    oci_execute($statement);
+    oci_free_statement($statement);
+
     $sql = "DELETE FROM POST WHERE UNI_ID = {$uniId} AND ID = {$postId}";
     $statement = oci_parse($this->conn, $sql);
     oci_execute($statement);
