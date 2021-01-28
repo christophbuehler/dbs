@@ -9,7 +9,7 @@ function handle($_method, $_rif, $callback) {
     $res = $callback($url_data);
     $data = [
       "success" => 1,
-      "data" => $res,
+      "data" => $res
     ];
     echo json_encode($data);
     exit;

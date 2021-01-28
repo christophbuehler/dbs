@@ -10,7 +10,7 @@ class Database
       $this->conn = oci_connect(
         $env['uname'],
         $env['pwd'],
-        $env['php_conn_str'],
+        $env['php_conn_str']
       );
       if (!$this->conn) {
         die("DB error: Connection can't be established!");
