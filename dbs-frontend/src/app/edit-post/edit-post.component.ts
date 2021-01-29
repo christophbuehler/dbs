@@ -23,6 +23,8 @@ export class EditPostComponent implements OnInit {
     public dialogRef: MatDialogRef<EditPostComponent>,
     private api: ApiService
   ) {
+    if (!data) return;
+
     this.refPostId = (data || {}).refPostId;
 
     if (data.post) {
