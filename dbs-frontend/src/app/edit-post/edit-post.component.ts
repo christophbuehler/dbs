@@ -16,6 +16,7 @@ export class EditPostComponent implements OnInit {
     inhalt: new FormControl(),
   });
   refPostId: number;
+  prevPost: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
@@ -23,11 +24,25 @@ export class EditPostComponent implements OnInit {
     private api: ApiService
   ) {
     this.refPostId = (data || {}).refPostId;
+
+    if (data.post) {
+      this.prevPost = data.post;
+      this.group.setValue({
+        titel: data.post.TITEL,
+        inhalt: data.post.INHALT,
+      });
+    }
   }
 
   ngOnInit(): void {}
 
   save() {
+    if (this.prevPost) {
+      return this.api
+        .updatePost(this.prevPost.ID, this.group.value)
+        .subscribe(() => this.dialogRef.close(true));
+    }
+
     if (this.refPostId) {
       return this.api
         .createReply(this.group.value, this.refPostId)

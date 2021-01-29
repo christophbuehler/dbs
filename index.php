@@ -53,6 +53,17 @@ handle('POST', '/post/{uni}', function ($data) {
 });
 
 /**
+ * Update a post for an uni.
+ * [POST] /put/{uni}/{post}
+ */
+handle('PUT', '/put/{uni}/{post}', function ($data) {
+  $env = get_env();
+  $db = new Database($env);
+  $body = json_decode(file_get_contents('php://input'), true);
+  return $db->updatePost($data['uni'], $data['post'], $body);
+});
+
+/**
  * Create a reply for a post.
  * [POST] /post/{uni}/{post}
  */

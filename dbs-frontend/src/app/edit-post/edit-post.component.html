@@ -1,6 +1,6 @@
 <div [formGroup]="group" fxLayout="column">
   <div class="title">
-    {{refPostId ? 'Write Reply' : 'Write Post'}}
+    {{prevPost ? 'Bearbeite Post' : (refPostId ? 'Antwort auf Post' : 'Erstelle Post')}}
   </div>
 <!-- 
   <mat-form-field>

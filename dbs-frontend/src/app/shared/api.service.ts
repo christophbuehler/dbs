@@ -74,6 +74,15 @@ export class ApiService {
     );
   }
 
+  updatePost(postId: number, data: any) {
+    return this.selectedUniSub.pipe(
+      first(),
+      tap(uni => {
+        this.http.put(`${API_BASE}/post/${uni.ID}/${postId}`, data).subscribe();
+      }),
+    );
+  }
+
   createReply(data: any, refPostId: number) {
     return this.selectedUniSub.pipe(
       first(),

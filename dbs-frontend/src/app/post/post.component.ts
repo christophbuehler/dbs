@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { filter, tap } from 'rxjs/operators';
+import { filter, tap, withLatestFrom } from 'rxjs/operators';
 import { EditPostComponent } from '../edit-post/edit-post.component';
 import { Post, ApiService } from '../shared/api.service';
 
@@ -39,6 +39,23 @@ export class PostComponent implements OnInit {
   removePost() {
     this.api.removePost(this.post.ID).pipe(
       tap(() => this.removed = true),
+    ).subscribe();
+  }
+
+  openEditDialog() {
+    let dialogRef = this.dialog.open(EditPostComponent, {
+      height: '400px',
+      width: '600px',
+      data: {
+        post: this.post,
+      }
+    });
+
+    // reload posts if added successfully
+    dialogRef.afterClosed().pipe(
+      filter(Boolean),
+      withLatestFrom(this.api.selectedUni),
+      tap(([, uni]) => this.api.fetchPosts(uni.ID)),
     ).subscribe();
   }
 
