@@ -90,6 +90,7 @@ class Database
   public function updatePost($uniId, $postId, $data)
   {
     $revnr = self::getMaxRevNr($uniId, $postId) + 1;
+    echo "$revnr";
     self::createRevision($postId, $uniId, $data['titel'], $data['inhalt'], $revnr);
   }
 
